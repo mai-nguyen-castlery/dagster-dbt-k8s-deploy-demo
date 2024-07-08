@@ -1,0 +1,60 @@
+run_launcher:
+  module: dagster.core.launcher
+  class: DefaultRunLauncher  # The DefaultRunLauncher spawns a new process in the same node as a job's code location.
+
+# Since DefaultRunCoordinator is the default option, omitting the `run_coordinator` key will also suffice,
+# but if you would like to set it explicitly:
+run_coordinator:
+  module: dagster.core.run_coordinator
+  class: DefaultRunCoordinator
+
+# Capture and persistence of raw stdout and stderr text logs.
+compute_logs:
+  module: dagster.core.storage.local_compute_log_manager
+  class: LocalComputeLogManager
+  config:
+    base_dir: "./dagster_home/logs/compute_logs"
+
+# Local artifact storage
+local_artifact_storage:
+  module: dagster.core.storage.root
+  class: LocalArtifactStorage
+  config:
+    base_dir: "./dagster_home/local_artifacts"
+
+# Allows opting out of Dagster collecting usage statistics.
+telemetry:
+  enabled: false
+
+# Configures how long Dagster waits for code locations
+# to load before timing out.
+code_servers:
+  local_startup_timeout: 360
+
+# Configures how long Dagster keeps sensor / schedule tick data
+retention:
+  runs:
+    default:
+      retention_period_days: 60:
+  schedule:
+    purge_after_days: 90 # sets retention policy for schedule ticks of all types
+  sensor:
+    purge_after_days:
+      skipped: 7
+      failure: 30
+      success: -1 # keep success ticks indefinitely
+
+# Configure how sensors are evaluated
+sensors:
+  use_threads: true
+  num_workers: 8
+
+# Configure how schedues are evaluated 
+schedules:
+  use_threads: true
+  num_workers: 8
+
+# Configure auto-materializing assets 
+auto_materialize:
+  run_tags:
+    key: false

@@ -1,0 +1,18 @@
+name: dagster
+channels:
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - pip=22.0.3
+  - python=3.11
+  - pip:
+    # - -r requirements.txt    # Install general dependencies
+    - dagster==1.7.*
+    - dagster-webserver
+    - dbt-core==1.8.*
+    - dagster-dbt
+    - isort 
+    - black 
+    - flake8
+    - -r example_jaffle_shop/requirements.txt  # Install required dependencies for example_jaffle_shop code location

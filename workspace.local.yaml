@@ -1,0 +1,5 @@
+load_from:
+  # Each entry here corresponds to a service in the docker-compose file that exposes user code.
+  - python_file: 
+      relative_path: example_jaffle_shop/jaffle_dagster/definitions.py
+      location_name: example_jaffle_shop
