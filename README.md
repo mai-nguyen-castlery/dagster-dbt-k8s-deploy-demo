@@ -17,7 +17,7 @@ The `dagster_home` directory is a central location for Dagster's configuration, 
 
 **`dagster.yaml` file**
 
-The `dagster.yaml` file [configures various aspects of Dagster's behavior.](https://docs.dagster.io/deployment/dagster-instance) for its local instance. 
+The `dagster.yaml` file [configures various aspects of Dagster's behavior](https://docs.dagster.io/deployment/dagster-instance) for its local instance. 
 
 ### example_jaffle_shop
 
