@@ -31,18 +31,18 @@ telemetry:
 code_servers:
   local_startup_timeout: 360
 
-# Configures how long Dagster keeps sensor / schedule tick data
-retention:
-  runs:
-    default:
-      retention_period_days: 60:
-  schedule:
-    purge_after_days: 90 # sets retention policy for schedule ticks of all types
-  sensor:
-    purge_after_days:
-      skipped: 7
-      failure: 30
-      success: -1 # keep success ticks indefinitely
+# # Configures how long Dagster keeps sensor / schedule tick data
+# retention:
+#   runs:
+#     default:
+#       retention_period_days: 60:
+#   schedule:
+#     purge_after_days: 90 # sets retention policy for schedule ticks of all types
+#   sensor:
+#     purge_after_days:
+#       skipped: 7
+#       failure: 30
+#       success: -1 # keep success ticks indefinitely
 
 # Configure how sensors are evaluated
 sensors:
